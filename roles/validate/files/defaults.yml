@@ -282,6 +282,31 @@ factory_defaults:
             enabled: true
             enable_qos: false
             fec: auto
+          topology_switch_dot1q_po_interface:
+            description: "NetAsCode Dot1q PO Interface"
+            copy_description: false
+            mtu: jumbo
+            speed: auto
+            enabled: true
+            enable_cdp: true
+            access_vlan: 1
+            pc_mode: active
+            spanning_tree_portfast: true
+            enable_bpdu_guard: true
+            duplex: auto
+            orphan_port: false
+            disable_lacp_suspend_individual: false
+            enable_lacp_vpc_convergence: false
+            lacp_port_priority: 32768
+            lacp_rate: normal
+            enable_qos: false
+            monitor: false
+            enable_storm_control: false
+            storm_control_action: default
+            enable_lldp: true
+            spanning_tree_port_type: none
+            enable_qos_stats: true
+            enable_queuing_stats: true
           topology_switch_routed_sub_interface:
             description: "NetAsCode Routed Sub Interface"
             mtu: 9216
