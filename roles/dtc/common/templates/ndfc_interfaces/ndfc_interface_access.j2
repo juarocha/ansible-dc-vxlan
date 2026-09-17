@@ -69,8 +69,9 @@
 {% if ndfc_version | cisco.nac_dc_vxlan.version_compare('12.6.0', '>') %}
 {# Data model defines SPANNING-TREE PORT TYPE: none, while base collection defines SPANNING-TREE PORT TYPE: no #}
     spanning_tree_port_type: "{{ translate(interface['spanning_tree_port_type'] | default(defaults.vxlan.topology.switches.interfaces.topology_switch_access_interface.spanning_tree_port_type), {'none': 'no'}) }}"
-{# Data model defines value as ENABLE LLDP, while base collection defines it as DISABLE LLDP #}
-    disable_lldp: {{ translate(interface['enable_lldp'] | default(defaults.vxlan.topology.switches.interfaces.topology_switch_access_interface.enable_lldp), {true: 'false', false: 'true'}) }}
+{# Data model defines ENABLE LLDP TRANSMIT/RECEIVE, while base collection defines DISABLE LLDP TRANSMIT/RECEIVE #}
+    disable_lldp_transmit: {{ translate(interface['enable_lldp_transmit'] | default(defaults.vxlan.topology.switches.interfaces.topology_switch_access_interface.enable_lldp_transmit), {true: 'false', false: 'true'}) }}
+    disable_lldp_receive: {{ translate(interface['enable_lldp_receive'] | default(defaults.vxlan.topology.switches.interfaces.topology_switch_access_interface.enable_lldp_receive), {true: 'false', false: 'true'}) }}
 {# Data model defines value as FLOW CONTROL RECEIVE: true/false, while base collection defines it as FLOWCONTROL_RECEIVE: on/off #}
     flowcontrol_receive: "{{ translate(interface['flow_control_receive'] | default(defaults.vxlan.topology.switches.interfaces.topology_switch_access_interface.flow_control_receive), {true: 'on', false: 'off'}) }}"
 {# Data model defines value as FLOWCONTROL_SEND: true/false, while base collection defines it as FLOWCONTROL_SEND: on/off #}

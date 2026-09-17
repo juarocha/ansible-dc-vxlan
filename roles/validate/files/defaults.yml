@@ -168,7 +168,8 @@ factory_defaults:
             speed: auto
             enabled: true
             enable_cdp: true
-            enable_lldp: true
+            enable_lldp_transmit: true
+            enable_lldp_receive: true
             access_vlan: 1
             spanning_tree_portfast: true
             spanning_tree_port_type: none
@@ -190,7 +191,8 @@ factory_defaults:
             speed: auto
             enabled: true
             enable_cdp: true
-            enable_lldp: true
+            enable_lldp_transmit: true
+            enable_lldp_receive: true
             trunk_allowed_vlans: none
             spanning_tree_portfast: true
             spanning_tree_port_type: none
@@ -229,7 +231,8 @@ factory_defaults:
             monitor: false
             enable_storm_control: false
             storm_control_action: default
-            enable_lldp: true
+            enable_lldp_transmit: true
+            enable_lldp_receive: true
             spanning_tree_port_type: none
             enable_qos_stats: true
             enable_queuing_stats: true
@@ -255,7 +258,8 @@ factory_defaults:
             monitor: false
             enable_storm_control: false
             storm_control_action: default
-            enable_lldp: true
+            enable_lldp_transmit: true
+            enable_lldp_receive: true
             spanning_tree_port_type: none
             enable_qos_stats: true
             enable_queuing_stats: true
@@ -303,7 +307,8 @@ factory_defaults:
             monitor: false
             enable_storm_control: false
             storm_control_action: default
-            enable_lldp: true
+            enable_lldp_transmit: true
+            enable_lldp_receive: true
             spanning_tree_port_type: none
             enable_qos_stats: true
             enable_queuing_stats: true
