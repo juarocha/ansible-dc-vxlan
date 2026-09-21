@@ -2,9 +2,7 @@ class Rule:
     id = "314"
     description = (
         "Verify that enable_qos_stats is only set on interfaces where QoS is "
-        "enabled. NDFC's DISABLE_QOS_STATS field is only meaningful when "
-        "ENABLE_QOS=true; setting enable_qos_stats without enable_qos: true "
-        "will silently produce no configuration."
+        "enabled."
     )
     severity = "HIGH"
 
@@ -32,8 +30,7 @@ class Rule:
                     results.append(
                         f"vxlan.topology.switches.{switch.get('name')}."
                         f"interfaces.{interface.get('name')}.enable_qos_stats: "
-                        f"is set but enable_qos is not true; the DISABLE_QOS_STATS "
-                        "field will not be emitted to NDFC. Set enable_qos: true "
+                        f"is set but enable_qos is not true; Set enable_qos: true "
                         "on the interface, or remove enable_qos_stats."
                     )
 

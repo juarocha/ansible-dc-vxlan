@@ -25,8 +25,7 @@ class Rule:
                     results.append(
                         f"vxlan.topology.switches.{switch.get('name')}."
                         f"interfaces.{interface.get('name')}.enable_queuing_stats: "
-                        "is set but queuing_policy is not defined; the "
-                        "DISABLE_QUEUING_STATS field will not be emitted to NDFC. "
+                        "is set but queuing_policy is not defined; "
                         "Set queuing_policy on the interface, or remove "
                         "enable_queuing_stats."
                     )
