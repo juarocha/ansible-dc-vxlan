@@ -286,6 +286,10 @@ factory_defaults:
             enabled: true
             enable_qos: false
             fec: auto
+            enable_lldp_transmit: true
+            enable_lldp_receive: true
+            enable_qos_stats: true
+            enable_queuing_stats: true
           topology_switch_dot1q_po_interface:
             description: "NetAsCode Dot1q PO Interface"
             copy_description: false
