@@ -59,7 +59,6 @@
 {% endif %}
     ipv6_link_local: {{ interface['ipv6_link_local_address'] | default(omit) }}
     ipv6_nd_suppress_ra: {{ interface['ipv6_nd_suppress_ra'] | default(defaults.vxlan.topology.switches.interfaces.topology_switch_routed_interface.ipv6_nd_suppress_ra) | lower }}
-    disable_ip_redirects: false
     disable_ipv4_redirects: {{ interface['disable_ipv4_redirects'] | default(defaults.vxlan.topology.switches.interfaces.topology_switch_routed_interface.disable_ipv4_redirects) | lower }}
     disable_ipv6_redirects: {{ interface['disable_ipv6_redirects'] | default(defaults.vxlan.topology.switches.interfaces.topology_switch_routed_interface.disable_ipv6_redirects) | lower }}
     arp_timeout: {{ interface['arp_timeout'] | default(omit) }}
@@ -76,7 +75,16 @@
 {% if interface['enable_netflow'] | default(defaults.vxlan.topology.switches.interfaces.topology_switch_routed_interface.enable_netflow) %}
     netflow_monitor: {{ interface['netflow_monitor'] | default(omit) }}
 {% endif %}
-    enable_pfc: {{ interface['enable_pfc'] | default(defaults.vxlan.topology.switches.interfaces.topology_switch_routed_interface.enable_pfc) | lower }}
+    enable_pfc: {{ interface['enable_priority_flow_control'] | default(defaults.vxlan.topology.switches.interfaces.topology_switch_routed_interface.enable_priority_flow_control) | lower }}
+    enable_dampening: {{ interface['enable_dampening'] | default(defaults.vxlan.topology.switches.interfaces.topology_switch_routed_interface.enable_dampening) | lower }}
+{% if interface['enable_dampening'] | default(defaults.vxlan.topology.switches.interfaces.topology_switch_routed_interface.enable_dampening) %}
+    dampening_half_life: {{ interface['dampening_half_life'] | default(omit) }}
+    dampening_reuse: {{ interface['dampening_reuse'] | default(omit) }}
+    dampening_suppress: {{ interface['dampening_suppress'] | default(omit) }}
+    dampening_max_suppress: {{ interface['dampening_max_suppress'] | default(omit) }}
+    dampening_restart: {{ interface['dampening_restart'] | default(defaults.vxlan.topology.switches.interfaces.topology_switch_routed_interface.dampening_restart) | lower }}
+    dampening_restart_penalty: {{ interface['dampening_restart_penalty'] | default(omit) }}
+{% endif %}
 {% endif %}
     cmds: |2-
       {{ interface['freeform_config'] | default('') | indent(6, false) }}
