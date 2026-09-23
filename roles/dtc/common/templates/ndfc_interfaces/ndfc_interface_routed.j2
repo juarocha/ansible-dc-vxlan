@@ -57,6 +57,26 @@
 {# Data model defines value as ENABLE QUEUING STATS, while base collection defines it as DISABLE QUEUING STATS #}
     disable_queuing_stats: {{ translate(interface['enable_queuing_stats'] | default(defaults.vxlan.topology.switches.interfaces.topology_switch_routed_interface.enable_queuing_stats), {true: 'false', false: 'true'}) }}
 {% endif %}
+    ipv6_link_local: {{ interface['ipv6_link_local_address'] | default(omit) }}
+    ipv6_nd_suppress_ra: {{ interface['ipv6_nd_suppress_ra'] | default(defaults.vxlan.topology.switches.interfaces.topology_switch_routed_interface.ipv6_nd_suppress_ra) | lower }}
+    disable_ip_redirects: false
+    disable_ipv4_redirects: {{ interface['disable_ipv4_redirects'] | default(defaults.vxlan.topology.switches.interfaces.topology_switch_routed_interface.disable_ipv4_redirects) | lower }}
+    disable_ipv6_redirects: {{ interface['disable_ipv6_redirects'] | default(defaults.vxlan.topology.switches.interfaces.topology_switch_routed_interface.disable_ipv6_redirects) | lower }}
+    arp_timeout: {{ interface['arp_timeout'] | default(omit) }}
+    ipv4_acl_in: {{ interface['ipv4_acl_in'] | default(omit) }}
+    enable_macsec_interface_policy: {{ interface['enable_macsec_interface_policy'] | default(defaults.vxlan.topology.switches.interfaces.topology_switch_routed_interface.enable_macsec_interface_policy) | lower }}
+{% if interface['enable_macsec_interface_policy'] | default(defaults.vxlan.topology.switches.interfaces.topology_switch_routed_interface.enable_macsec_interface_policy) %}
+    macsec_key_chain_name: {{ interface['macsec_key_chain_name'] | default(omit) }}
+    macsec_policy_name: {{ interface['macsec_policy_name'] | default(omit) }}
+    macsec_fallback_key_chain_name: {{ interface['macsec_fallback_key_chain_name'] | default(omit) }}
+{% endif %}
+    enable_pim_sparse: {{ interface['enable_pim_sparse'] | default(defaults.vxlan.topology.switches.interfaces.topology_switch_routed_interface.enable_pim_sparse) | lower }}
+    enable_pim_bfd_instance: {{ interface['enable_pim_bfd_instance'] | default(defaults.vxlan.topology.switches.interfaces.topology_switch_routed_interface.enable_pim_bfd_instance) | lower }}
+    enable_netflow: {{ interface['enable_netflow'] | default(defaults.vxlan.topology.switches.interfaces.topology_switch_routed_interface.enable_netflow) | lower }}
+{% if interface['enable_netflow'] | default(defaults.vxlan.topology.switches.interfaces.topology_switch_routed_interface.enable_netflow) %}
+    netflow_monitor: {{ interface['netflow_monitor'] | default(omit) }}
+{% endif %}
+    enable_pfc: {{ interface['enable_pfc'] | default(defaults.vxlan.topology.switches.interfaces.topology_switch_routed_interface.enable_pfc) | lower }}
 {% endif %}
     cmds: |2-
       {{ interface['freeform_config'] | default('') | indent(6, false) }}
