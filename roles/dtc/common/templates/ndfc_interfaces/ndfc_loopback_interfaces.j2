@@ -34,8 +34,6 @@
   profile:
 {% if interface.mode == 'loopback' %}
     mode: lo
-{% elif interface.mode == 'mpls_loopback' %}
-    mode: mpls
 {% elif interface.mode == 'fabric_loopback' %}
     mode: fabric
 {% endif %}
